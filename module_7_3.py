@@ -4,6 +4,7 @@ from operator import index
 
 class WordsFinder:
     file_names = []
+    punct_marks = set(string.punctuation)
 
     def __init__(self, *args):
         self.file_names.extend(args)
@@ -13,13 +14,13 @@ class WordsFinder:
         for el in self.file_names:
             with open(el, encoding='utf-8') as file:
                 file_line = ' '.join(file.read().splitlines())
-                file_line = ''.join(ch for ch in file_line if ch not in set(string.punctuation))
+                file_line = ''.join(ch for ch in file_line if ch not in self.punct_marks)
                 file_line = file_line.lower().split()
             all_words[el] = file_line
         return all_words
 
     def upd_word(self, word):
-        word = ''.join(ch for ch in word if ch not in set(string.punctuation))
+        word = ''.join(ch for ch in word if ch not in self.punct_marks)
         word = word.lower()
         return word
 
