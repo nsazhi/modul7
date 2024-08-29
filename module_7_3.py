@@ -3,7 +3,7 @@ import string
 
 class WordsFinder:
     file_names = []
-    punct_ = set(string.punctuation)
+    __PUNCT = set(string.punctuation)
 
     def __init__(self, *args):
         self.file_names.extend(args)
@@ -13,14 +13,12 @@ class WordsFinder:
         for el in self.file_names:
             with open(el, encoding='utf-8') as file:
                 file_line = ' '.join(file.read().splitlines())
-                file_line = ''.join(ch for ch in file_line if ch not in self.punct_)
-                file_line = file_line.lower().split()
+                file_line = ''.join(ch for ch in file_line if ch not in self.__PUNCT).lower().split()
             all_words[el] = file_line
         return all_words
 
     def upd_word(self, word):
-        word = ''.join(ch for ch in word if ch not in self.punct_)
-        word = word.lower()
+        word = ''.join(ch for ch in word if ch not in self.__PUNCT).lower()
         return word
 
     def find(self, word):
