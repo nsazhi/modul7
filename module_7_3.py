@@ -13,7 +13,7 @@ class WordsFinder:
         for el in self.file_names:
             with open(el, encoding='utf-8') as file:
                 file_line = ' '.join(file.read().splitlines())
-                file_line = ''.join(ch for ch in file_line if ch not in self.__PUNCT).lower().split()
+            file_line = ''.join(ch for ch in file_line if ch not in self.__PUNCT).lower().split()
             all_words[el] = file_line
         return all_words
 
