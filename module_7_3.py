@@ -1,5 +1,4 @@
 import string
-from operator import index
 
 
 class WordsFinder:
